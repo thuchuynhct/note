@@ -7,7 +7,7 @@ import CreateNote from "./pages/NoteForm";
 function App() {
   return (
     <div id="app" style={{ display: "flex" }} >
-      <BrowserRouter>
+      <BrowserRouter basename="note">
         <header className="min-h-screen w-header bg-header border-solid border-r-2 border-gray-200 transition-all
                            sm:!w-16 md:w-60">
           <Nav />

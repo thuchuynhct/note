@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Main from "./pages/Main";
+import Nav from "./pages/Nav";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { AppProvider } from "./context/context";
+import CreateNote from "./pages/NoteForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app" style={{ display: "flex" }} >
+      <BrowserRouter>
+        <header className="min-h-screen w-header bg-header border-solid border-r-2 border-gray-200 transition-all
+                           sm:!w-16 md:w-60">
+          <Nav />
+        </header>
+        <AppProvider>
+          <main className="flex-1 h-screen overflow-y-scroll">
+            <Routes>
+              <Route index path="/" element={<Main />} />
+              <Route path="/:tag" element={<Main />} />
+              <Route path="/create" element={<CreateNote />} />
+              <Route path="/edit/:tag" element={<CreateNote />} />
+            </Routes>
+          </main>
+        </AppProvider>
+      </BrowserRouter>
     </div>
+
   );
 }
 
